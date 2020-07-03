@@ -11,7 +11,7 @@ CMSusingOOPs    :-  In this I have created a python program which is used to get
                     of your device. Please change the name folder or add the folder to your device storage
                     before you run this program in your device.
                  
-   CMSGUI      :-   In this program I have created a GUI(Graphic User Interface) for the CMSusingOOPs.
+   CMSGUI      :-   In this program I have created a <i>GUI(Graphic User Interface)</i> for the CMSusingOOPs.
                     Before running this program please run the CMSusingOOPs otherwise it will 
                     show error.
 </pre>

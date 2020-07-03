@@ -1,0 +1,92 @@
+import CMSusingOOPs
+from tkinter import *
+from tkinter import messagebox
+def btnAdd_Click():
+    cus=CMSusingOOPS.Customer()
+    cus.id=varId.get()
+    cus.age=varAge.get()
+    cus.name=varName.get()
+    cus.addcust()
+    messagebox.showinfo("CMS","Customer Added Successfully")
+    varId.set("")
+    varAge.set("")
+    varName.set("")
+def btnSearch_Click():
+    cus=CMSusingOOPS.Customer()
+    cus.id=varId.get()
+    cus.searchcust()
+    varAge.set(cus.age)
+    varName.set(cus.name)
+def btnDelete_Click():
+    cus = CMSusingOOPS.Customer()
+    cus.id = varId.get()
+    cus.delcust()
+    messagebox.showinfo("CMS", "Customer Deleted Successfully")
+    varId.set("")
+def btnModify_Click():
+    cus = CMSusingOOPS.Customer()
+    cus.id = varId.get()
+    cus.age = varAge.get()
+    cus.name = varName.get()
+    cus.modifycust()
+    messagebox.showinfo("CMS", "Customer Modified Successfully")
+    varId.set("")
+    varAge.set("")
+    varName.set("")
+def btnAll_Click():
+    root1=Tk()
+    lblId1=Label(root1,text="CUST ID",bg="orange",font=1,width=20)
+    lblId1.grid(row=0,column=0)
+    lblAge1 = Label(root1, text="CUST AGE", bg="orange", font=1, width=20)
+    lblAge1.grid(row=0, column=1)
+    lblName1 = Label(root1, text="CUST NAME", bg="orange", font=1, width=20)
+    lblName1.grid(row=0, column=2)
+    i=1
+    for e in CMSusingOOPS.Customer.cuslist:
+        lblId2 = Label(root1, text=f"{e.id}", bg="pink", font=1, width=20)
+        lblId2.grid(row=i, column=0)
+        lblAge2 = Label(root1, text=f"{e.age}", bg="pink", font=1, width=20)
+        lblAge2.grid(row=i, column=1)
+        lblName2 = Label(root1, text=f"{e.name}", bg="pink", font=1, width=20)
+        lblName2.grid(row=i, column=2)
+        i+=1
+def btnSave_Click():
+    CMSusingOOPS.Customer.savetoPickle()
+def btnLoad_Click():
+    CMSusingOOPS.Customer.loadfromPickle()
+root=Tk()
+root.geometry("600x400")
+lblId=Label(root,text="Enter Customer ID:",font=1)
+lblId.grid(row=0,column=0)
+lblAge=Label(root,text="Enter Customer Age:",font=1)
+lblAge.grid(row=1,column=0)
+lblName=Label(root,text="Enter Customer Name:",font=1)
+lblName.grid(row=2,column=0)
+
+varId=StringVar()
+entrId=Entry(root,textvariable=varId,font=1)
+entrId.grid(row=0,column=1)
+varAge=StringVar()
+entrAge=Entry(root,textvariable=varAge,font=1)
+entrAge.grid(row=1,column=1)
+varName=StringVar()
+entrName=Entry(root,textvariable=varName,font=1)
+entrName.grid(row=2,column=1)
+
+btnAdd=Button(root,text="Add Customer",font=1,command=btnAdd_Click,width=20)
+btnAdd.grid(row=3,column=1)
+btnSearch=Button(root,text="Search Customer",font=1,command=btnSearch_Click,width=20)
+btnSearch.grid(row=4,column=2)
+btnDelete=Button(root,text="Delete Customer",font=1,command=btnDelete_Click,width=20)
+btnDelete.grid(row=5,column=1)
+btnModify=Button(root,text="Modify Customer",font=1,command=btnModify_Click,width=20)
+btnModify.grid(row=6,column=2)
+btnAll=Button(root,text="Display All",font=1,command=btnAll_Click,width=20)
+btnAll.grid(row=7,column=1)
+btnSave=Button(root,text="Save in Pickle",font=1,command=btnSave_Click,width=20)
+btnSave.grid(row=8,column=2)
+btnLoad=Button(root,text="Load from Pickle",font=1,command=btnLoad_Click,width=20)
+btnLoad.grid(row=9,column=1)
+
+
+root.mainloop()
